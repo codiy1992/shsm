@@ -15,3 +15,5 @@ chmod 0400 ~/.ssh/id_rsa
 
 export PATH="/root/bin:${PATH}"
 export PS1='shsm:\w\$ '
+
+git pull
