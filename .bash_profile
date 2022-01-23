@@ -11,5 +11,7 @@ fi
 
 chmod 0400 ~/.ssh/id_rsa
 
+(ssh-keygen -F github.com 1> /dev/null || ssh-keyscan github.com) 2> /dev/null >> .ssh/known_hosts
+
 export PATH="/root/bin:${PATH}"
 export PS1='shsm:\w\$ '
