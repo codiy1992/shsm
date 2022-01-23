@@ -12,6 +12,7 @@ RUN apk add --no-cache \
         gnupg \
         ca-certificates \
         docker \
-        docker-compose
+        docker-compose \
+        openssh-client
 
 WORKDIR /root
