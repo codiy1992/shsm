@@ -1,0 +1,93 @@
+#!/bin/bash
+
+if ! [ -x "$(command -v git)" ]; then
+    echo 'Error: git is not installed.' >&2
+    exit 1
+fi
+
+if ! [ -x "$(command -v gpg)" ]; then
+    echo 'Error: gpg is not installed.' >&2
+    exit 1
+fi
+
+WORKDIR=$(cd "`dirname $0`/.."; pwd)
+SOURCE=${WORKDIR}
+TARGET=${WORKDIR}/data
+
+RECIPIENT="mail@codiy.net"
+
+PATTERNS=(
+    ${SOURCE}/nas
+    ${SOURCE}/.ssh/id_rsa
+)
+
+cd ${WORKDIR}
+
+FILE_HASH_DB="${WORKDIR}/storage/.hash"
+if [ ! -f ${FILE_HASH_DB}} ]; then
+    touch ${FILE_HASH_DB}
+fi
+
+FILES=`
+for pattern in ${PATTERNS[@]} ; do
+    find ${pattern} -type f | tr '\n' ' '
+done
+`
+
+for FILE in ${FILES[@]}; do
+    if [ "${FILE}" == "." ] || [ "${FILE}" == ".." ]; then
+        continue
+    fi
+
+    FILE_PATH=${TARGET}/${FILE#${SOURCE}/}
+    mkdir -p `dirname ${FILE_PATH}`
+
+    HASH=`git hash-object ${FILE}`
+    HASH_CONTENT="${FILE_PATH} ${HASH}"
+    CHECK_HASH=`sed -n "/${HASH}$/p" ${FILE_HASH_DB}`
+    if [ "${CHECK_HASH}" != "" ]; then
+        if [ "${CHECK_HASH}" != "${HASH_CONTENT}" ]; then
+            TMP=`sed "/${HASH}$/d" ${FILE_HASH_DB}`
+            echo -e "${TMP}" > ${FILE_HASH_DB}
+            echo -e "R ${FILE_PATH}"
+            echo ${HASH_CONTENT} >> ${FILE_HASH_DB}
+            gpg --yes --armor -r ${RECIPIENT} -o ${FILE_PATH} -e ${FILE}
+        fi
+        continue
+    fi
+
+    TMP=${FILE_PATH//\//\\\/}
+    PAT=${TMP//\./\\\.}
+    CHECK_FILE=`sed -n "/^${PAT}/p" ${FILE_HASH_DB}`
+    if [ "${CHECK_FILE}" != "" ]; then
+        TMP=`sed "/^${PAT}/d" ${FILE_HASH_DB}`
+        echo -e "${TMP}" > ${FILE_HASH_DB}
+        echo "M ${FILE_PATH}";
+    else
+        echo "A ${FILE_PATH}";
+    fi
+
+    echo ${HASH_CONTENT} >> ${FILE_HASH_DB}
+    gpg --yes --armor -r ${RECIPIENT} -o ${FILE_PATH} -e ${FILE}
+
+done
+
+DB_FILES=`cat ${FILE_HASH_DB} | awk {'print $1'}`
+for DB_FILE in ${DB_FILES[@]}; do
+    EXISTS=false
+    for FILE in ${FILES[@]}; do
+        FILE_PATH=${TARGET}/${FILE#${SOURCE}/}
+        if [ "${FILE_PATH}" == "${DB_FILE}" ]; then
+            EXISTS=true
+            break
+        fi
+    done
+    if [ ${EXISTS} == false ]; then
+        rm -fr ${DB_FILE}
+        TMP=${DB_FILE//\//\\\/}
+        PAT=${TMP//\./\\\.}
+        TMP=`sed "/^${PAT}/d" ${FILE_HASH_DB}`
+        echo -e "${TMP}" > ${FILE_HASH_DB}
+        echo -e "D ${DB_FILE}"
+    fi
+done

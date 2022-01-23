@@ -1,0 +1,14 @@
+/*
+!.gitignore
+!.gitconfig
+!/README.md
+!/Makefile
+!/Dockerfile
+!/docker-compose.yml
+!/.bash_profile
+!/.vimrc
+!/bin/
+!/data/
+!/.ssh/
+!/.gnupg/
+!/storage/
