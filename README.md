@@ -11,5 +11,5 @@ Self Hosted Services/Systems Management
 docker run --rm -v ${PWD}/shsm:/code amd64/alpine /bin/sh -c 'apk add git openssh-client; \
 mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts; \
 git clone https://github.com/codiy1992/shsm.git /code; \
-sed "s/^\turl = http.*/\turl = git@github\.com:codiy1992\/shsm\.git/" /code/.git/config'
+sed -i "s/^\turl = http.*/\turl = git@github\.com:codiy1992\/shsm\.git/" /code/.git/config'
 ```
