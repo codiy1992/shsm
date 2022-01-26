@@ -13,3 +13,5 @@
 !/.ssh/
 !/.gnupg/
 !/storage/
+
+!/openwrt/
