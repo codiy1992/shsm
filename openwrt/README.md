@@ -20,7 +20,12 @@ cd ~/vmfs/volumes/datastore1
 vmkfstools -i openwrt-x86-64-generic-ext4-combined.vmdk openwrt-2022.01.26.vmdk
 ```
 
-* On ESXi Web Console, 新建虚拟机,删除默认硬盘,添加 `openwrt-2022.01.26.vmdk` 硬盘
+* On ESXi Web Console, 新建虚拟机
+
+    * [虚拟机选项] > [客户机操作系统版本] > 选"其他 5.x 或更高版本的 Linux(64bit)"
+    * [虚拟硬件] > [网络适配器] > [适配器类型] > 选"VMNEXT 3"
+    * 添加直通的PCI网卡, 并且内存选项需设置预留所有内存
+    * 删除默认硬盘,添加 vmdk 硬盘
 
 ## 扩容硬盘
 
