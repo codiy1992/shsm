@@ -50,3 +50,24 @@ echo -e '{
 * `sftp` 将密钥文件传至 `/root/.gnupg/shsm.sec.key`
 * 安装并初始化 shsm, 详见本项目 `[README.md](/README.md)`
 
+## 挂载 iscsi 硬盘
+
+* 配置 iscsid, 编辑 `/etc/iscsi/iscsid.conf`
+
+* 发现 iscsi 节点
+
+```
+iscsiadm --mode discovery -t sendtargets --portal 192.168.1.3
+```
+
+* 重启 iscsid 服务, `/etc/init.d/open-iscsi restart`, 即可建立连接
+
+* (Optional)连接到 iscsi 节点
+
+```
+iscsiadm --mode node --targetname \
+iqn.2004-04.com.qnap:ts-453dmini:iscsi.openwrt.5904bc \
+--portal 192.168.1.3 --login
+```
+
+* `fdisk -l` 查看硬盘
