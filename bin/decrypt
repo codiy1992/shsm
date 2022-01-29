@@ -20,6 +20,8 @@ BACKUP=${WORKDIR}/storage/backup
 RECIPIENT="mail@codiy.net"
 PATTERNS=(
     ${SOURCE}/nas
+    ${SOURCE}/openwrt/iscsid.conf
+    ${SOURCE}/.ssh/id_rsa
 )
 
 cd ${WORKDIR}

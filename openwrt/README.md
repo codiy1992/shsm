@@ -22,17 +22,73 @@ vmkfstools -i openwrt-x86-64-generic-ext4-combined.vmdk openwrt-2022.01.26.vmdk
 
 * On ESXi Web Console, 新建虚拟机
 
-    * [虚拟机选项] > [客户机操作系统版本] > 选"其他 5.x 或更高版本的 Linux(64bit)"
+    * [虚拟机选项] > [客户机操作系统版本] > 选"其他 3.x Linux(64bit)"
     * [虚拟硬件] > [网络适配器] > [适配器类型] > 选"VMNEXT 3"
     * 添加直通的PCI网卡, 并且内存选项需设置预留所有内存
     * 删除默认硬盘,添加 vmdk 硬盘
 
-## 扩容硬盘
+## 配置网关
 
-因为是装在 ESXi 上, 在 ESXi 上更改硬盘大小后, 回到 OpenWrt 进行分区和挂载，如下
+### 在 web 界面操作
+
+* 配合 ROS使用, 用作网关的 openwrt
+* 直接在 web 界面操作即可
+* 直通网卡和 ESXi 虚拟网卡都挂到 br-lan 底下
+* 关闭 br-lan 网口的 DHCP 服务(DHCP 已由 ROS 提供的情况下)
+* 设定网关为 ROS 地址
+* 设定 DNS 地址
+
+### 在命令行终端操作
+
+* `vim /etc/config/network`
+
+```
+config interface 'lan'
+        option type 'bridge'
+        option proto 'static'
+        option ipaddr '192.168.1.2'
+        option netmask '255.255.255.0'
+        option ip6assign '60'
+        option _orig_ifname 'eth0'
+        option _orig_bridge 'true'
+        option ifname 'eth0 eth1'
+        option gateway '192.168.1.1'
+        option dns '218.85.157.99 218.85.152.99'
+```
+
+* `/etc/init.d/network restart`
+
+## 挂载 iscsi 硬盘
+
+* 配置 iscsid, 编辑 `/etc/iscsi/iscsid.conf`
+
+* 启动服务
+
+```
+/etc/init.d/open-iscsi enable
+/etc/init.d/open-iscsi start
+```
+
+* 发现 iscsi 节点
+
+```
+iscsiadm --mode discovery -t sendtargets --portal 192.168.1.3
+```
+
+* 连接到 iscsi 节点
+
+```
+iscsiadm --mode node --targetname \
+iqn.2004-04.com.qnap:ts-453dmini:iscsi.openwrt.5904bc \
+--portal 192.168.1.3 --login
+```
+
+* `fdisk -l` 查看硬盘
+
+## 硬盘分区与挂载
 
 * `fdisk -l` 查看磁盘情况
-* 使用 `cfdisk` 命令将剩余的 `free` 状态的磁盘空间进行分区, 输入分区大小, 然后`[Write]`,`[Quit]` 即可
+* 使用 `cfdisk /dev/sdb` 将 `free` 状态的磁盘空间进行分区
 * 使用 `mkfs.ext4 /dev/sda3` 将新的分区格式化为 `ext4` 格式
 * 使用 `mount /dev/sda3 PATH_TO_MOUNT` 挂载分区到特定路径
 
@@ -55,24 +111,3 @@ echo -e '{
 * `sftp` 将密钥文件传至 `/root/.gnupg/shsm.sec.key`
 * 安装并初始化 shsm, 详见本项目 `[README.md](/README.md)`
 
-## 挂载 iscsi 硬盘
-
-* 配置 iscsid, 编辑 `/etc/iscsi/iscsid.conf`
-
-* 发现 iscsi 节点
-
-```
-iscsiadm --mode discovery -t sendtargets --portal 192.168.1.3
-```
-
-* 重启 iscsid 服务, `/etc/init.d/open-iscsi restart`, 即可建立连接
-
-* (Optional)连接到 iscsi 节点
-
-```
-iscsiadm --mode node --targetname \
-iqn.2004-04.com.qnap:ts-453dmini:iscsi.openwrt.5904bc \
---portal 192.168.1.3 --login
-```
-
-* `fdisk -l` 查看硬盘
