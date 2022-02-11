@@ -5,19 +5,24 @@
 
 ## 在 ESXi 上安装 OpenWrt
 
-* On MacOS, [利用 `qemu` 将编译好的 OpenWrt 固件转化为 vmdk](https://openwrt.org/docs/guide-user/virtualization/vmware)
+* On MacOS, 利用 `qemu` 将编译好的 OpenWrt 固件转化为 vmdk
+
+[参考文档](https://openwrt.org/docs/guide-user/virtualization/vmware)
 
 ```
 brew install qemu
 gzip -qd openwrt-x86-64-generic-ext4-combined.img.gz
-qemu-img convert -f raw -O vmdk openwrt-x86-64-generic-ext4-combined.img openwrt-x86-64-generic-ext4-combined.vmdk
+qemu-img convert -f raw -O vmdk openwrt-x86-64-generic-ext4-combined-efi.img \ 
+  openwrt-x86-64-generic-ext4-combined-efi.vmdk
 ```
+> 转换后的 `vmdk` 可供 `Vmware Workstation` 直接使用, 要在 `Vmware vSphere` (即`ESXi`) 上使用还需使  
+> 用 `vmkfstools` 再做一次转换
 
 * On ESXi, 将 qemu 转换的 vmdk 再次转化为 ESXi 能正确识别的 vmdk 文件
 
 ```shell
 cd ~/vmfs/volumes/datastore1
-vmkfstools -i openwrt-x86-64-generic-ext4-combined.vmdk openwrt-2022.01.26.vmdk
+vmkfstools -i openwrt-x86-64-generic-ext4-combined-efi.vmdk openwrt-2022.01.26.vmdk
 ```
 
 * On ESXi Web Console, 新建虚拟机
