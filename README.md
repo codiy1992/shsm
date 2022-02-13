@@ -5,11 +5,8 @@ Self Hosted Services/Systems Management
 
 * Docker
 
-## Setup without git installed
+## Install without git installed
 
 ```shell
-docker run --rm -v ${PWD}/shsm:/code amd64/alpine /bin/sh -c 'apk add git openssh-client; \
-mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts; \
-git clone https://github.com/codiy1992/shsm.git /code; \
-sed -i "s/^\turl = http.*/\turl = git@github\.com:codiy1992\/shsm\.git/" /code/.git/config'
+curl -fssL https://raw.githubusercontent.com/codiy1992/shsm/master/install.sh |bash
 ```
