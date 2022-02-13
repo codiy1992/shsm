@@ -9,6 +9,7 @@
 !/.bash_profile
 !/.vimrc
 !/run.sh
+!/install.sh
 !/bin/
 !/data/
 !/.ssh/
