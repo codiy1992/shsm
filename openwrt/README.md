@@ -101,12 +101,14 @@ iqn.2004-04.com.qnap:ts-453dmini:iscsi.openwrt.5904bc \
 
 ```shell
 echo -e '{
-	"log-driver": "json-file",
-	"log-opts": {
-		"max-size": "10m",
-		"max-file":  "1"
-	},
-    "graph": "/root/docker"
+    "data-root": "/root/docker",
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file":  "1"
+    },
+    "log-level": "warn", 
+    "iptables": true
 }' > /etc/docker/daemon.json
 /etc/init.d/dockerd restart
 ```
