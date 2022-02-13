@@ -97,7 +97,9 @@ iqn.2004-04.com.qnap:ts-453dmini:iscsi.openwrt.5904bc \
 * 使用 `mkfs.ext4 /dev/sda3` 将新的分区格式化为 `ext4` 格式
 * 使用 `mount /dev/sda3 PATH_TO_MOUNT` 挂载分区到特定路径
 
-## 将 docker graph driver 修改到具有较大空间的分区, 默认位置为 `/var/lib/docker`
+## 将 docker **data-root** 修改到具有较大空间的分区, 默认位置为 `/var/lib/docker`
+
+> **在 openwrt 上请直接修改 **`/etc/config/dockerd`**, 否则修改 **`/etc/docker/daemon.json`**
 
 ```shell
 echo -e '{
