@@ -4,9 +4,9 @@ WORKDIR=$(cd "`dirname $0`/.."; pwd)
 SOURCE=${WORKDIR}
 TARGET=${WORKDIR}/data
 
-. ./bin/common
-
 cd ${WORKDIR}
+
+. ./bin/common
 
 FILE_HASH_DB="${PWD}/storage/.hash"
 
