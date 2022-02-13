@@ -1,7 +1,7 @@
-/root/data/nas/services/.env 27b8f2e23e1e987669a9127ba82422a589dfbee7
-/root/data/nas/services/docker-compose.yml 13fcda2062dc3034b423a944360f85248fcb704a
-/root/data/.ssh/id_rsa 44bb5c615c8ee21a55a0b2343f7f6c897a1592f9
-/root/data/nas/caddy/Caddyfile d2256f2223fec874b1aac1f763f080f0ecdee82c
-/root/data/nas/caddy/Dockerfile d6e3e95fcd4ea2296bcbff761e1a9be6a4c27182
-/root/data/nas/settings.yaml cd7a15ad5bc655879e93c182ec83aee54c2e1742
-/root/data/openwrt/iscsid.conf 86d208274d6983e30d98f1bb0aa9210c4b4035bd
+.ssh/id_rsa 44bb5c615c8ee21a55a0b2343f7f6c897a1592f9
+nas/caddy/Caddyfile d2256f2223fec874b1aac1f763f080f0ecdee82c
+nas/caddy/Dockerfile d6e3e95fcd4ea2296bcbff761e1a9be6a4c27182
+nas/services/.env 27b8f2e23e1e987669a9127ba82422a589dfbee7
+nas/services/docker-compose.yml 13fcda2062dc3034b423a944360f85248fcb704a
+nas/settings.yaml cd7a15ad5bc655879e93c182ec83aee54c2e1742
+openwrt/iscsid.conf 86d208274d6983e30d98f1bb0aa9210c4b4035bd

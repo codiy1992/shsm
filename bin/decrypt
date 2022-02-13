@@ -1,34 +1,19 @@
 #!/bin/bash
 
-if ! [ -x "$(command -v git)" ]; then
-    echo 'Error: git is not installed.' >&2
-    exit 1
-fi
-
-if ! [ -x "$(command -v gpg)" ]; then
-    echo 'Error: gpg is not installed.' >&2
-    exit 1
-fi
-
 WORKDIR=$(cd "`dirname $0`/.."; pwd)
 SOURCE=${WORKDIR}/data
 TARGET=${WORKDIR}
 
+. ./bin/common
+
 RUNTIME=${WORKDIR}/storage/runtime
 BACKUP=${WORKDIR}/storage/backup
-
-RECIPIENT="mail@codiy.net"
-PATTERNS=(
-    ${SOURCE}/nas
-    ${SOURCE}/openwrt/iscsid.conf
-    ${SOURCE}/.ssh/id_rsa
-)
 
 cd ${WORKDIR}
 
 FILES=`
 for pattern in ${PATTERNS[@]} ; do
-    find ${pattern} -type f | tr '\n' ' '
+    find ${SOURCE}/${pattern} -type f | tr '\n' ' '
 done
 `
 
