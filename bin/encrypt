@@ -40,15 +40,19 @@ for FILE in ${FILES[@]}; do
     if [ "${CHECK_HASH}" != "" ]; then
         if [ "${CHECK_HASH}" != "${HASH_CONTENT}" ]; then
             OLD_FILE=${CHECK_HASH%\ ${HASH}}
-            mv ${TARGET}/${OLD_FILE} ${TARGET}/${FILE_PATH}
-            info "R ${OLD_FILE} -> ${FILE_PATH}"
-            OLD_FILE=${OLD_FILE//\//\\\/}
-            OLD_FILE=${OLD_FILE//\./\\\.}
-            NEW_FILE=${FILE_PATH//\//\\\/}
-            NEW_FILE=${NEW_FILE//\./\\\.}
-            replace "s/${OLD_FILE}/${NEW_FILE}/" ${FILE_HASH_DB}
+            if [ "`dirname ${TARGET}/${OLD_FILE}`" = "`dirname ${TARGET}/${FILE_PATH}`" ]; then
+                mv ${TARGET}/${OLD_FILE} ${TARGET}/${FILE_PATH}
+                info "R ${OLD_FILE} -> ${FILE_PATH}"
+                OLD_FILE=${OLD_FILE//\//\\\/}
+                OLD_FILE=${OLD_FILE//\./\\\.}
+                NEW_FILE=${FILE_PATH//\//\\\/}
+                NEW_FILE=${NEW_FILE//\./\\\.}
+                replace "s/${OLD_FILE}/${NEW_FILE}/" ${FILE_HASH_DB}
+                continue
+            fi
+        else
+            continue
         fi
-        continue
     fi
 
     PAT=${FILE_PATH//\//\\\/}
