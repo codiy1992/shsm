@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
 
-  shsm: &shsm
+  shsm:
     image: shsm
     container_name: shsm
     build: .
@@ -11,12 +11,3 @@ services:
       - ${PWD}:/root
       - ${HOME}/.gnupg/shsm.sec.key:/root/.gnupg/secret.key
       - /var/run/docker.sock:/var/run/docker.sock
-
-  nas:
-    <<: *shsm
-    container_name: nas
-    volumes:
-      - ${PWD}:/root
-      - ${HOME}/.gnupg/shsm.sec.key:/root/.gnupg/secret.key
-      - /var/run/docker.sock:/var/run/docker.sock
-
