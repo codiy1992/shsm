@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKDIR=$(cd "`dirname $0`/.."; pwd)
+WORKDIR=$(cd $(dirname $0); pwd)
 SOURCE=${WORKDIR}/data
 TARGET=${WORKDIR}
 
@@ -11,11 +11,11 @@ cd ${WORKDIR}
 RUNTIME=${WORKDIR}/storage/runtime
 BACKUP=${WORKDIR}/storage/backup
 
-FILES=`
+FILES=$(
 for pattern in ${PATTERNS[@]} ; do
     find ${SOURCE}/${pattern} -type f | tr '\n' ' '
 done
-`
+)
 
 rm -fr ${RUNTIME} ${BACKUP}
 mkdir -p ${RUNTIME} ${BACKUP}
@@ -26,19 +26,19 @@ for FILE in ${FILES[@]}; do
     DECR_PATH=${RUNTIME}/${FILE#${SOURCE}/}
     BACKUP_PATH=${BACKUP}/${FILE#${SOURCE}/}
 
-    mkdir -p `dirname ${DIST_PATH}`
-    mkdir -p `dirname ${DECR_PATH}`
+    mkdir -p $(dirname ${DIST_PATH})
+    mkdir -p $(dirname ${DECR_PATH})
 
     gpg --quiet --yes -r ${RECIPIENT} -o ${DECR_PATH} -d ${FILE}
 
     if [ -f ${DIST_PATH} ]; then
-        HASH_DIST=`git hash-object ${DIST_PATH}`
-        HASH_DECR=`git hash-object ${DECR_PATH}`
+        HASH_DIST=$(git hash-object ${DIST_PATH})
+        HASH_DECR=$(git hash-object ${DECR_PATH})
         if [ "${HASH_DIST}" == "${HASH_DECR}" ]; then
             continue
         else
-            mkdir -p `dirname ${BACKUP_PATH}`
-            DIFF=`git diff --no-index ${DIST_PATH} ${DECR_PATH}`
+            mkdir -p $(dirname ${BACKUP_PATH})
+            DIFF=$(git diff --no-index ${DIST_PATH} ${DECR_PATH})
             yes | cp -rf ${DIST_PATH} ${BACKUP_PATH} 2>/dev/null || :
             echo -e "${DIFF}" >> ${BACKUP}/diff.log
         fi

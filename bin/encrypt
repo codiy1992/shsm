@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKDIR=$(cd "`dirname $0`/.."; pwd)
+WORKDIR=$(cd $(dirname $0); pwd)
 SOURCE=${WORKDIR}
 TARGET=${WORKDIR}/data
 
@@ -14,11 +14,11 @@ if [ ! -f ${FILE_HASH_DB}} ]; then
     touch ${FILE_HASH_DB}
 fi
 
-FILES=`
+FILES=$(
 for pattern in ${PATTERNS[@]} ; do
     find ${SOURCE}/${pattern} -type f | tr '\n' ' '
 done
-`
+)
 
 for FILE in ${FILES[@]}; do
 
@@ -31,11 +31,11 @@ for FILE in ${FILES[@]}; do
     fi
 
     FILE_PATH=${FILE#${SOURCE}/}
-    mkdir -p `dirname ${TARGET}/${FILE_PATH}`
+    mkdir -p $(dirname ${TARGET}/${FILE_PATH})
 
-    HASH=`git hash-object ${FILE}`
+    HASH=$(git hash-object ${FILE})
     HASH_CONTENT="${FILE_PATH} ${HASH}"
-    MATCHED_ROWS=`sed -n "/${HASH}$/p" ${FILE_HASH_DB}`
+    MATCHED_ROWS=$(sed -n "/${HASH}$/p" ${FILE_HASH_DB})
     MATCHED_FILES=${MATCHED_ROWS//${HASH}/}
 
     if [ "${MATCHED_FILES}" != "" ]; then
@@ -46,7 +46,7 @@ for FILE in ${FILES[@]}; do
         done
         for ROW in ${MATCHED_FILES[@]}; do
             OLD_FILE=${ROW}
-            if [ "${OLD_FILE%\/[^\/]*}" = "${FILE_PATH%\/[^\/]*}" ]; then
+            if [ "$(dirname ${OLD_FILE})" = "$(dirname ${FILE_PATH})" ]; then
                 mv ${TARGET}/${OLD_FILE} ${TARGET}/${FILE_PATH}
                 info "R ${OLD_FILE} -> ${FILE_PATH}"
                 OLD_FILE=${OLD_FILE//\//\\\/}
@@ -61,7 +61,7 @@ for FILE in ${FILES[@]}; do
 
     PAT=${FILE_PATH//\//\\\/}
     PAT=${PAT//\./\\\.}
-    CHECK_FILE=`sed -n "/^${PAT} /p" ${FILE_HASH_DB}`
+    CHECK_FILE=$(sed -n "/^${PAT} /p" ${FILE_HASH_DB})
     if [ "${CHECK_FILE}" != "" ]; then
         replace "/^${PAT}/d" ${FILE_HASH_DB}
         info "M ${FILE_PATH}";
@@ -74,7 +74,7 @@ for FILE in ${FILES[@]}; do
 
 done
 
-DB_FILES=`cat ${FILE_HASH_DB} |awk '{print substr($0, 0, length($0)-41)}'`
+DB_FILES=$(cat ${FILE_HASH_DB} |awk '{print substr($0, 0, length($0)-41)}')
 for DB_FILE in ${DB_FILES[@]}; do
     EXISTS=false
     for FILE in ${FILES[@]}; do

@@ -5,19 +5,19 @@ function ok() { echo -e "\033[49;32m$1\033[0m";}
 function info() { echo -e "\033[49;34m$1\033[0m";}
 function warn() { echo -e "\033[49;31m$1\033[0m";}
 
-[ -x "$(command -v git)" ] || err "git isn't installed yet."
-[ -x "$(command -v gpg)" ] || err "gpg isn't installed yet."
-[ -f .config ] || err "Config file doesn't exists."
+[ -x "$(command -v git)" ] || err "git doesn't installed yet."
+[ -x "$(command -v gpg)" ] || err "gpg doesn't installed yet."
+[ -f .config ] || err "Config file .config doesn't exists."
 
-RECIPIENT=`gpg --list-keys | grep -o '<[^>]*>' |head -n 1`
+RECIPIENT=$(gpg --list-keys | grep -o '<[^>]*>' |head -n 1)
 RECIPIENT="${RECIPIENT%\s}"
 [ "$RECIPIENT" = "" ] && read -p "Enter your gpg recipient: " RECIPIENT
 
-PATTERNS="`cat .config | grep -o '^[^#]*' $1 |sort|uniq`"
+PATTERNS=$(cat .config | grep -o '^[^#]*' $1 |sort|uniq)
 
 function replace() {
     [ $# -ne 2 ] && exit 1
-    if [ "`uname`" = "Darwin" ]; then
+    if [ "$(uname)" = "Darwin" ]; then
         sed -i '' $1 $2
     else
         sed -i $1 $2
