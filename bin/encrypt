@@ -45,8 +45,8 @@ for FILE in ${FILES[@]}; do
             fi
         done
         for ROW in ${MATCHED_FILES[@]}; do
-            OLD_FILE=${ROW%\ ${HASH}}
-            if [ "`dirname ${TARGET}/${OLD_FILE}`" = "`dirname ${TARGET}/${FILE_PATH}`" ]; then
+            OLD_FILE=${ROW}
+            if [ "${OLD_FILE%\/[^\/]*}" = "${FILE_PATH%\/[^\/]*}" ]; then
                 mv ${TARGET}/${OLD_FILE} ${TARGET}/${FILE_PATH}
                 info "R ${OLD_FILE} -> ${FILE_PATH}"
                 OLD_FILE=${OLD_FILE//\//\\\/}
@@ -61,7 +61,7 @@ for FILE in ${FILES[@]}; do
 
     PAT=${FILE_PATH//\//\\\/}
     PAT=${PAT//\./\\\.}
-    CHECK_FILE=`sed -n "/^${PAT}/p" ${FILE_HASH_DB}`
+    CHECK_FILE=`sed -n "/^${PAT} /p" ${FILE_HASH_DB}`
     if [ "${CHECK_FILE}" != "" ]; then
         replace "/^${PAT}/d" ${FILE_HASH_DB}
         info "M ${FILE_PATH}";
