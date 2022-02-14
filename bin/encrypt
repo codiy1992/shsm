@@ -35,11 +35,17 @@ for FILE in ${FILES[@]}; do
 
     HASH=`git hash-object ${FILE}`
     HASH_CONTENT="${FILE_PATH} ${HASH}"
-    CHECK_HASH=`sed -n "/${HASH}$/p" ${FILE_HASH_DB}`
+    MATCHED_ROWS=`sed -n "/${HASH}$/p" ${FILE_HASH_DB}`
+    MATCHED_FILES=${MATCHED_ROWS//${HASH}/}
 
-    if [ "${CHECK_HASH}" != "" ]; then
-        if [ "${CHECK_HASH}" != "${HASH_CONTENT}" ]; then
-            OLD_FILE=${CHECK_HASH%\ ${HASH}}
+    if [ "${MATCHED_FILES}" != "" ]; then
+        for ROW in ${MATCHED_FILES[@]}; do
+            if [ "${ROW}" = "${FILE_PATH}" ]; then
+                continue 2
+            fi
+        done
+        for ROW in ${MATCHED_FILES[@]}; do
+            OLD_FILE=${ROW%\ ${HASH}}
             if [ "`dirname ${TARGET}/${OLD_FILE}`" = "`dirname ${TARGET}/${FILE_PATH}`" ]; then
                 mv ${TARGET}/${OLD_FILE} ${TARGET}/${FILE_PATH}
                 info "R ${OLD_FILE} -> ${FILE_PATH}"
@@ -48,11 +54,9 @@ for FILE in ${FILES[@]}; do
                 NEW_FILE=${FILE_PATH//\//\\\/}
                 NEW_FILE=${NEW_FILE//\./\\\.}
                 replace "s/${OLD_FILE}/${NEW_FILE}/" ${FILE_HASH_DB}
-                continue
+                continue 2
             fi
-        else
-            continue
-        fi
+        done
     fi
 
     PAT=${FILE_PATH//\//\\\/}
