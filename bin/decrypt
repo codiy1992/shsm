@@ -48,4 +48,6 @@ for FILE in ${FILES[@]}; do
 
 done
 
+rm -fr ${RUNTIME}
+
 cat ${BACKUP}/diff.log 2>/dev/null || :
