@@ -10,4 +10,4 @@ openwrt/mysql/conf.d/my.cnf e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 nas/.env 32940524744d5c1ab72f26b2686074faf1ae1443
 nas/docker-compose.yml 1c738eab51cebd2dbe77da810e9091b3269674ed
 openwrt/docker-compose.yml a460fe3c1920eed4c27c244d4baa0c5d49bead0c
-ros/port-nat.sh 9d36ca8a12842b49cee5287b49d11053e4e745c0
+ros/port-nat.sh e2a8e15a1ca44c73c54112285ed9cd40b102c079
