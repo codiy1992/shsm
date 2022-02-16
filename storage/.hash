@@ -1,5 +1,4 @@
 .ssh/id_rsa 44bb5c615c8ee21a55a0b2343f7f6c897a1592f9
-nas/caddy/Caddyfile d2256f2223fec874b1aac1f763f080f0ecdee82c
 nas/caddy/Dockerfile d6e3e95fcd4ea2296bcbff761e1a9be6a4c27182
 nas/settings.yaml cd7a15ad5bc655879e93c182ec83aee54c2e1742
 openwrt/iscsid.conf 86d208274d6983e30d98f1bb0aa9210c4b4035bd
@@ -8,6 +7,7 @@ openwrt/caddy/Dockerfile d6e3e95fcd4ea2296bcbff761e1a9be6a4c27182
 openwrt/caddy/Caddyfile d2256f2223fec874b1aac1f763f080f0ecdee82c
 openwrt/mysql/conf.d/my.cnf e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 nas/.env 32940524744d5c1ab72f26b2686074faf1ae1443
-nas/docker-compose.yml 1c738eab51cebd2dbe77da810e9091b3269674ed
 openwrt/docker-compose.yml a460fe3c1920eed4c27c244d4baa0c5d49bead0c
 ros/port-nat.sh e2a8e15a1ca44c73c54112285ed9cd40b102c079
+nas/caddy/Caddyfile 4cefee39cc9de1d7f3e9eaae082ed48e0ade1902
+nas/docker-compose.yml 31253a908e96f20d7cc2e4677de962b887e33eb5
