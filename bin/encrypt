@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKDIR=$(cd $(dirname $0); pwd)
+WORKDIR=$(cd $(dirname $0)/../; pwd)
 SOURCE=${WORKDIR}
 TARGET=${WORKDIR}/data
 

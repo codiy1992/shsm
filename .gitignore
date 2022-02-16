@@ -8,7 +8,7 @@
 !/docker-compose.yml
 !/.bash_profile
 !/.vimrc
-!/run.sh
+!/active
 !/install.sh
 !/bin/
 !/data/
