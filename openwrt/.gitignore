@@ -1,4 +1,5 @@
-*
+/*
 !.gitignore
 !iscsid.conf.default
 !README.md
+!adguardhome/
