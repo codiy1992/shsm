@@ -2,8 +2,8 @@ bind_host: 0.0.0.0
 bind_port: 8000
 beta_bind_port: 0
 users:
-  - name: codiy
-    password: $2y$05$rZoscgSXacVYFmiX5Y2VWOrWWzDoX9ZRJaCOZkJpzzpjjLASiOo/u
+- name: codiy
+  password: $2y$05$rZoscgSXacVYFmiX5Y2VWOrWWzDoX9ZRJaCOZkJpzzpjjLASiOo/u
 auth_attempts: 5
 block_auth_min: 15
 http_proxy: ""
@@ -12,7 +12,7 @@ debug_pprof: false
 web_session_ttl: 720
 dns:
   bind_hosts:
-    - 0.0.0.0
+  - 0.0.0.0
   port: 53
   statistics_interval: 90
   querylog_enabled: true
@@ -31,28 +31,28 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-    - tls://dns.google
-    - https://dns.google/dns-query
-    - tls://dns11.quad9.net
-    - https://dns11.quad9.net/dns-query
+  - tls://dns.google
+  - https://dns.google/dns-query
+  - tls://dns11.quad9.net
+  - https://dns11.quad9.net/dns-query
   upstream_dns_file: ""
   bootstrap_dns:
-    - 8.8.8.8
-    - 8.8.4.4
-    - 9.9.9.11
-    - 149.112.112.11
+  - 8.8.8.8
+  - 8.8.4.4
+  - 9.9.9.11
+  - 149.112.112.11
   all_servers: false
   fastest_addr: false
   fastest_timeout: 1s
   allowed_clients: []
   disallowed_clients: []
   blocked_hosts:
-    - version.bind
-    - id.server
-    - hostname.bind
+  - version.bind
+  - id.server
+  - hostname.bind
   trusted_proxies:
-    - 127.0.0.0/8
-    - ::1/128
+  - 127.0.0.0/8
+  - ::1/128
   cache_size: 4194302
   cache_ttl_min: 600
   cache_ttl_max: 3600
@@ -95,42 +95,42 @@ tls:
   certificate_path: ""
   private_key_path: ""
 filters:
-  - enabled: true
-    url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
-    name: AdGuard DNS filter
-    id: 1
-  - enabled: true
-    url: https://adaway.org/hosts.txt
-    name: AdAway Default Blocklist
-    id: 2
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/o0HalfLife0o/list@master/ad.txt
-    name: 【halflife】涵盖了 EasyList China、EasyList Lite、CJX 's Annoyance、乘风视频过滤规则，以及补充的其它规则
-    id: 1645101601
-  - enabled: true
-    url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
-    name: 【Xinggsf 乘风通用】国内网站广告过滤规则
-    id: 1645101603
-  - enabled: true
-    url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
-    name: 【Xinggsf 乘风视频】视频网站广告过滤规则
-    id: 1645101604
-  - enabled: true
-    url: https://easylist-downloads.adblockplus.org/antiadblockfilters.txt
-    name: 【Adblock Warning Removal List】去除禁止广告拦截提示规则
-    id: 1645101605
-  - enabled: true
-    url: https://anti-ad.net/easylist.txt
-    name: "CHN: anti-AD"
-    id: 1645101608
-  - enabled: true
-    url: https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
-    name: WindowsSpyBlocker - Hosts spy rules
-    id: 1645101609
+- enabled: true
+  url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+  name: AdGuard DNS filter
+  id: 1
+- enabled: true
+  url: https://adaway.org/hosts.txt
+  name: AdAway Default Blocklist
+  id: 2
+- enabled: true
+  url: https://cdn.jsdelivr.net/gh/o0HalfLife0o/list@master/ad.txt
+  name: 【halflife】涵盖了 EasyList China、EasyList Lite、CJX 's Annoyance、乘风视频过滤规则，以及补充的其它规则
+  id: 1645101601
+- enabled: true
+  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
+  name: 【Xinggsf 乘风通用】国内网站广告过滤规则
+  id: 1645101603
+- enabled: true
+  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
+  name: 【Xinggsf 乘风视频】视频网站广告过滤规则
+  id: 1645101604
+- enabled: true
+  url: https://easylist-downloads.adblockplus.org/antiadblockfilters.txt
+  name: 【Adblock Warning Removal List】去除禁止广告拦截提示规则
+  id: 1645101605
+- enabled: true
+  url: https://anti-ad.net/easylist.txt
+  name: 'CHN: anti-AD'
+  id: 1645101608
+- enabled: true
+  url: https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+  name: WindowsSpyBlocker - Hosts spy rules
+  id: 1645101609
 whitelist_filters: []
 user_rules:
-  - "@@||alimama.com^$important"
-  - ""
+- '@@||alimama.com^$important'
+- ""
 dhcp:
   enabled: false
   interface_name: ""
@@ -160,4 +160,3 @@ os:
   user: ""
   rlimit_nofile: 0
 schema_version: 12
-
