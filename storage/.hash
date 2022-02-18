@@ -8,6 +8,7 @@ openwrt/caddy/Caddyfile d2256f2223fec874b1aac1f763f080f0ecdee82c
 openwrt/mysql/conf.d/my.cnf e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 nas/.env 32940524744d5c1ab72f26b2686074faf1ae1443
 ros/port-nat.sh e2a8e15a1ca44c73c54112285ed9cd40b102c079
-nas/docker-compose.yml 821a390fe42fc50d1c0cc86c344f8a0f1bf6b898
 nas/caddy/Caddyfile 7bfbbc4b1ea63e43dfc795d4808a470818374a14
 openwrt/docker-compose.yml 3011605146e312a9cbd56aac0414dc013b2c5d71
+nas/docker-compose.yml 606f1572dbf247faed12af0dc63c0b41e4d5cb3d
+nas/cloudreve/conf.ini 82621c3c49a11fa2b22a1376092e38b1fc6f1a43
