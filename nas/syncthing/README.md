@@ -41,6 +41,7 @@ syncthing 实例可以正常连接, 配置地址时统一使用公网IP或域名
 
 * (required)路由器转发发现服务器 **`8443`** 端口
 * (required)路由器转发中继服务器 **`22067`** 端口
+* (required)路由器转发Syncthing服务器 **`22000`** 端口
 
 
 ## References
