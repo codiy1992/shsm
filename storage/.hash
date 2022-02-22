@@ -11,5 +11,5 @@ nas/caddy/Caddyfile 7bfbbc4b1ea63e43dfc795d4808a470818374a14
 openwrt/dashy/conf.yml 80f3e5018dda1a2a62531d69cba6a44cef2bd1dd
 nas/cloudreve/conf.ini 93ff009e9e1596e20235243bf911bd17cc08ff84
 openwrt/docker-compose.yml 340c680516275654d77433beb0a7a60cc3c82f6c
-nas/docker-compose.yml 3cbad9d31c0064a1a31a3e8ae01935238527a95b
 ros/port-nat.sh 31dda2511e5785b0e57a08b2bc8b87983d5af08e
+nas/docker-compose.yml 60a79d5b0e7931f8ab659b45c36db1d5112f8c6d
