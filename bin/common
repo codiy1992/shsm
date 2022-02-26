@@ -10,7 +10,7 @@ function warn() { echo -e "\033[49;31m$1\033[0m";}
 [ -f .config ] || err "Config file .config doesn't exists."
 
 RECIPIENT=$(gpg --list-secret-keys | grep -o '<[^>]*>' |head -n 1)
-RECIPIENT="${RECIPIENT%\s}"
+RECIPIENT="${RECIPIENT//[<>\s]}"
 [ "$RECIPIENT" = "" ] && read -p "Enter your gpg recipient: " RECIPIENT
 
 PATTERNS=$(cat .config | grep -o '^[^#]*' $1 |sort|uniq)
