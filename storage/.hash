@@ -12,4 +12,4 @@ nas/.env 3c3369281a4c24a20b1d69928ecb735007b96a6e
 nas/caddy/Caddyfile 0b2edde3722f8edbc1eda8ed499de2b089ad1e31
 ros/port-nat.sh 4cc3df5a3e2fca27b4736ceb01c4f4154c2db47e
 nas/docker-compose.yml 30387f3480d837d22786d44a247b06c03a8b00d2
-openwrt/docker-compose.yml 8ecf5d5b999a8b12895cd5cd96542fe52a69bf35
+openwrt/docker-compose.yml a134073527552a51f03ba84ee2c3da45a1439747
