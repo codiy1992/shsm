@@ -48,6 +48,14 @@ for FILE in ${FILES[@]}; do
 
 done
 
+while IFS= read -r line
+do
+    LINE=(${line})
+    if [[ "${LINE[1]}" =~ ^[0-9]+$ ]]; then
+        find ${TARGET}/${LINE[0]} -type f -exec chmod ${LINE[1]} {} \;
+    fi
+done < .config
+
 rm -fr ${RUNTIME}
 
 cat ${BACKUP}/diff.log 2>/dev/null || :

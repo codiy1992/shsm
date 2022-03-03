@@ -13,7 +13,7 @@ RECIPIENT=$(gpg --list-secret-keys | grep -o '<[^>]*>' |head -n 1)
 RECIPIENT="${RECIPIENT//[<>\s]}"
 [ "$RECIPIENT" = "" ] && read -p "Enter your gpg recipient: " RECIPIENT
 
-PATTERNS=$(cat .config | grep -o '^[^#]*' $1 |sort|uniq)
+PATTERNS=$(cat .config | grep -o '^[^#]*' $1 | awk '{print $1}' |sort|uniq)
 
 function replace() {
     [ $# -ne 2 ] && exit 1
