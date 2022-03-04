@@ -13,4 +13,4 @@ nas/caddy/Caddyfile 0b2edde3722f8edbc1eda8ed499de2b089ad1e31
 ros/port-nat.sh 4cc3df5a3e2fca27b4736ceb01c4f4154c2db47e
 openwrt/restic/backup.sh fd646c89c4aaacde5f7430e69f5fa1f46804697b
 openwrt/docker-compose.yml 6a7b8162aff4038709da759527f2cb9689b6d446
-nas/docker-compose.yml f0b5d173cd5b9049726b9de4e1c36da211ff6b65
+nas/docker-compose.yml 9e15ca24da1642df74ab4c2df26c00353555db0a
