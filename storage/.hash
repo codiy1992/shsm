@@ -11,6 +11,7 @@ nas/cloudreve/conf.ini 93ff009e9e1596e20235243bf911bd17cc08ff84
 nas/.env 3c3369281a4c24a20b1d69928ecb735007b96a6e
 nas/caddy/Caddyfile 0b2edde3722f8edbc1eda8ed499de2b089ad1e31
 ros/port-nat.sh 4cc3df5a3e2fca27b4736ceb01c4f4154c2db47e
-openwrt/restic/backup.sh fd646c89c4aaacde5f7430e69f5fa1f46804697b
-openwrt/docker-compose.yml 6a7b8162aff4038709da759527f2cb9689b6d446
-nas/docker-compose.yml 9e15ca24da1642df74ab4c2df26c00353555db0a
+nas/docker-compose.yml 1207512045bfdd225a088046d1a2440745ecf448
+openwrt/docker-compose.yml 853611673cff5f7ae0e660c1037bdb856f0d5f0d
+nas/restic/backup 56b726548a5a7f8cca670f429300832d7e1abd7d
+openwrt/restic/backup fd646c89c4aaacde5f7430e69f5fa1f46804697b
