@@ -9,10 +9,10 @@ openwrt/mysql/conf.d/my.cnf e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 openwrt/dashy/conf.yml 80f3e5018dda1a2a62531d69cba6a44cef2bd1dd
 nas/cloudreve/conf.ini 93ff009e9e1596e20235243bf911bd17cc08ff84
 nas/.env 3c3369281a4c24a20b1d69928ecb735007b96a6e
-ros/port-nat.sh 4cc3df5a3e2fca27b4736ceb01c4f4154c2db47e
 openwrt/docker-compose.yml 853611673cff5f7ae0e660c1037bdb856f0d5f0d
 nas/restic/backup 56b726548a5a7f8cca670f429300832d7e1abd7d
 openwrt/restic/backup fd646c89c4aaacde5f7430e69f5fa1f46804697b
 nas/docker-compose.yml b4d8c5290f9767ccaac38954da66a8e0265e297c
-nas/ankisync/Settings.toml 126a29114b2b44d014e723bf186a85edea833024
 nas/caddy/Caddyfile 8705ac8d27384dffbac48d9d8887e0376e6913ce
+nas/ankisync/Settings.toml ac430d168bf12deac3b2b2ab0f45cceee2906d51
+ros/port-nat.sh 7ea2878993953c275ca58d69bd24f863bca426cf
