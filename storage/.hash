@@ -15,4 +15,4 @@ ros/port-nat.sh 7ea2878993953c275ca58d69bd24f863bca426cf
 nas/restic/backup 9516d13e47b865ddd110a91b8d669c18c8363bf1
 openwrt/docker-compose.yml b87d09a58b58985df9980e6d7b4cf4a69f98495b
 openwrt/mysql/conf.d/my.cnf 5a52359b82afd9e89fa543e349963daac79b59f0
-nas/docker-compose.yml ac61ee3689d48e26ac6432788e5288137652148d
+nas/docker-compose.yml 6abf479462600a51adadae28032b03ec0e3df29f
