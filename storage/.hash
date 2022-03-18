@@ -14,7 +14,7 @@ openwrt/mysql/conf.d/my.cnf 5a52359b82afd9e89fa543e349963daac79b59f0
 nas/restic/backup efd8e7ebfeb08c063b00766c8e7325ec61448030
 openwrt/restic/backup a3e6b9914ed530c0b9233d5e5ddc897882369a38
 ros/port-nat.sh 6a022fe1e22f6c2dde0a41438d49e20dcd8001fc
-nas/docker-compose.yml c166b6a5bd65d942e4eef395c8e08db6cbf5cd35
 nas/ankisync/ankiweb.net.crt 5635ae2c4107ec26b1d7a898914fc532b6241352
 nas/ankisync/ankiweb.net.key da527b2d2f18eb0771dd691410588296a4856d3e
 nas/caddy/Caddyfile 44e1a3ec1f59849c148fec7d3458e3693ccab31a
+nas/docker-compose.yml 600d1c72a6f661164c3da52f2db2017f6ebfeab7
