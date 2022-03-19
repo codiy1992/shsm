@@ -15,6 +15,6 @@ nas/restic/backup efd8e7ebfeb08c063b00766c8e7325ec61448030
 openwrt/restic/backup a3e6b9914ed530c0b9233d5e5ddc897882369a38
 ros/port-nat.sh 6a022fe1e22f6c2dde0a41438d49e20dcd8001fc
 nas/caddy/Caddyfile 44e1a3ec1f59849c148fec7d3458e3693ccab31a
-nas/docker-compose.yml 8e591337d58aacfe943c34c03f5d78f7f565f1ee
 nas/ankisync/.ankiweb.net.crt 0d7e568d0878c48888080022289ec5958c54129a
 nas/ankisync/.ankiweb.net.key e1a47b9333bedf1d885f2b2e29add102ddabbcab
+nas/docker-compose.yml 92b9de705802ea668816aa6ec9df9c65d5f4ee8c
