@@ -17,4 +17,4 @@ ros/port-nat.sh 6a022fe1e22f6c2dde0a41438d49e20dcd8001fc
 nas/caddy/Caddyfile 44e1a3ec1f59849c148fec7d3458e3693ccab31a
 nas/ankisync/.ankiweb.net.crt 0d7e568d0878c48888080022289ec5958c54129a
 nas/ankisync/.ankiweb.net.key e1a47b9333bedf1d885f2b2e29add102ddabbcab
-nas/docker-compose.yml 92b9de705802ea668816aa6ec9df9c65d5f4ee8c
+nas/docker-compose.yml 8941b13674551b015982cf97262bb4d6c3009d08
