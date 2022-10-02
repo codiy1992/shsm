@@ -11,10 +11,10 @@ nas/.env 3c3369281a4c24a20b1d69928ecb735007b96a6e
 nas/ankisync/Settings.toml ac430d168bf12deac3b2b2ab0f45cceee2906d51
 openwrt/docker-compose.yml b87d09a58b58985df9980e6d7b4cf4a69f98495b
 openwrt/mysql/conf.d/my.cnf 5a52359b82afd9e89fa543e349963daac79b59f0
-nas/restic/backup efd8e7ebfeb08c063b00766c8e7325ec61448030
-openwrt/restic/backup a3e6b9914ed530c0b9233d5e5ddc897882369a38
 ros/port-nat.sh 6a022fe1e22f6c2dde0a41438d49e20dcd8001fc
 nas/caddy/Caddyfile 44e1a3ec1f59849c148fec7d3458e3693ccab31a
 nas/ankisync/.ankiweb.net.crt 0d7e568d0878c48888080022289ec5958c54129a
 nas/ankisync/.ankiweb.net.key e1a47b9333bedf1d885f2b2e29add102ddabbcab
 nas/docker-compose.yml 8941b13674551b015982cf97262bb4d6c3009d08
+openwrt/restic/backup 57458c94a1f385daa4db50eec7bf50cf6d3a51cb
+nas/restic/backup 2c5d111e3b10bdde6888e9407751bf340805846d
