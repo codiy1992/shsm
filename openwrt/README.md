@@ -63,6 +63,8 @@ config interface 'lan'
 
 * `/etc/init.d/network restart`
 
+* `passwd` 设置密码
+
 ## 挂载 iscsi 硬盘
 
 * 配置 iscsid, 编辑 `/etc/iscsi/iscsid.conf`
