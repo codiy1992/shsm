@@ -117,6 +117,10 @@ echo -e '{
 /etc/init.d/dockerd restart
 ```
 
+> Notice: 在宿舍的实例 在`reboot` 之后需挂载磁盘
+> `mount /dev/sda3 /docker`, `mount /dev/sdb1 /root`
+> `/etc/init.d/dockerd start`
+
 ## 安装 shsm
 
 * `sftp` 将密钥文件传至 `/root/.gnupg/shsm.sec.key`
