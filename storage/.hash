@@ -16,5 +16,5 @@ nas/ankisync/.ankiweb.net.crt 0d7e568d0878c48888080022289ec5958c54129a
 nas/ankisync/.ankiweb.net.key e1a47b9333bedf1d885f2b2e29add102ddabbcab
 openwrt/docker-compose.yml 17bd512dc05fa557c1a4535c83e9415577054ac7
 openwrt/restic/backup f85bb690d0383af6502d603be2565ba88783c949
-nas/docker-compose.yml 1f770a0f126dc55e2f72a6f7a3df169748e15a62
 nas/restic/backup 426a18fd76468710ccab050c5180fa4a0e6e7341
+nas/docker-compose.yml baf4cde4e07a623fcf6edd0a8dbb3f3c5510f742
