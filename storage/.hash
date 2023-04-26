@@ -15,6 +15,6 @@ nas/caddy/Caddyfile 44e1a3ec1f59849c148fec7d3458e3693ccab31a
 nas/ankisync/.ankiweb.net.crt 0d7e568d0878c48888080022289ec5958c54129a
 nas/ankisync/.ankiweb.net.key e1a47b9333bedf1d885f2b2e29add102ddabbcab
 openwrt/docker-compose.yml 17bd512dc05fa557c1a4535c83e9415577054ac7
-nas/restic/backup cd801a300355f75701a0fad668326cef76fe8f75
 openwrt/restic/backup f85bb690d0383af6502d603be2565ba88783c949
-nas/docker-compose.yml 7477979d73b108ee85eec113cb59d41d238e8bae
+nas/docker-compose.yml 1f770a0f126dc55e2f72a6f7a3df169748e15a62
+nas/restic/backup 426a18fd76468710ccab050c5180fa4a0e6e7341
