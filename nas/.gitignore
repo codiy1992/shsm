@@ -4,4 +4,4 @@
 !/aria2/
 !/syncthing/
 !/minio/
-!/puppeteer/
+!/puppeteer/supervisor.d/
