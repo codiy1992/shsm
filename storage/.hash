@@ -19,4 +19,4 @@ nas/restic/backup 426a18fd76468710ccab050c5180fa4a0e6e7341
 openwrt/restic/backup f60be5207acc345da114c6c0199f8ac7c72c632e
 nas/puppeteer/supervisor.d/.gitignore 78d910160c4b6a2be02b1060dfbc5a0ec2526bb1
 nas/docker-compose.yml 1e9d441eb02696e7dbfa2636d4e233c2c9c1a5cd
-nas/puppeteer/supervisor.d/yachne.conf 07b8021ce02cda9f1bad7ee23fbe06e0c406f3b5
+nas/puppeteer/supervisor.d/yachne.conf 03b7ddd056c29bfb2b811a52e2b482fc3b2c5175
