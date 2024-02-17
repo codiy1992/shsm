@@ -20,4 +20,4 @@ nas/puppeteer/supervisor.d/yachne.conf 03b7ddd056c29bfb2b811a52e2b482fc3b2c5175
 openwrt/.env 2968c2e16690458279c80c452c61d187b820699b
 openwrt/caddy/Caddyfile bbd7976b96ef300017c2a6786397ef4d5b269a79
 openwrt/frpc.toml 9ef4f26f10dcc9722f728b2c9925be479ae54dcc
-openwrt/docker-compose.yml dc318c1fa882708973c981968be1d6a0ee0ba17a
+openwrt/docker-compose.yml 88a5a0ae22e8aa3a92b3be9227b7327ee0cc710c
