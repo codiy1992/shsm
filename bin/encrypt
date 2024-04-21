@@ -1,0 +1,94 @@
+#!/bin/bash
+
+WORKDIR=$(cd $(dirname $0)/../; pwd)
+SOURCE=${WORKDIR}
+TARGET=${WORKDIR}/data
+
+cd ${WORKDIR}
+
+. ./bin/common
+
+FILE_HASH_DB="${PWD}/storage/.hash"
+
+if [ ! -f ${FILE_HASH_DB}} ]; then
+    touch ${FILE_HASH_DB}
+fi
+
+FILES=$(
+for pattern in ${PATTERNS[@]} ; do
+    find ${SOURCE}/${pattern} -type f | tr '\n' ' '
+done
+)
+
+for FILE in ${FILES[@]}; do
+
+    [[ $FILE =~ ^[a-zA-Z0-9_/\.\-]+$ ]] || {
+        err "${FILE}: file name must match '^[a-zA-Z0-9_/\.\-]+$'"
+    }
+
+    if [ "${FILE}" = "." ] || [ "${FILE}" = ".." ]; then
+        continue
+    fi
+
+    FILE_PATH=${FILE#${SOURCE}/}
+    mkdir -p $(dirname ${TARGET}/${FILE_PATH})
+
+    HASH=$(git hash-object ${FILE})
+    HASH_CONTENT="${FILE_PATH} ${HASH}"
+    MATCHED_ROWS=$(sed -n "/${HASH}$/p" ${FILE_HASH_DB})
+    MATCHED_FILES=${MATCHED_ROWS//${HASH}/}
+
+    if [ "${MATCHED_FILES}" != "" ]; then
+        for ROW in ${MATCHED_FILES[@]}; do
+            if [ "${ROW}" = "${FILE_PATH}" ]; then
+                continue 2
+            fi
+        done
+        for ROW in ${MATCHED_FILES[@]}; do
+            OLD_FILE=${ROW}
+            if [ "$(dirname ${OLD_FILE})" = "$(dirname ${FILE_PATH})" ]; then
+                mv ${TARGET}/${OLD_FILE} ${TARGET}/${FILE_PATH}
+                info "R ${OLD_FILE} -> ${FILE_PATH}"
+                OLD_FILE=${OLD_FILE//\//\\\/}
+                OLD_FILE=${OLD_FILE//\./\\\.}
+                NEW_FILE=${FILE_PATH//\//\\\/}
+                NEW_FILE=${NEW_FILE//\./\\\.}
+                replace "s/${OLD_FILE}/${NEW_FILE}/" ${FILE_HASH_DB}
+                continue 2
+            fi
+        done
+    fi
+
+    PAT=${FILE_PATH//\//\\\/}
+    PAT=${PAT//\./\\\.}
+    CHECK_FILE=$(sed -n "/^${PAT} /p" ${FILE_HASH_DB})
+    if [ "${CHECK_FILE}" != "" ]; then
+        replace "/^${PAT}/d" ${FILE_HASH_DB}
+        info "M ${FILE_PATH}";
+    else
+        ok "A ${FILE_PATH}";
+    fi
+
+    echo ${HASH_CONTENT} >> ${FILE_HASH_DB}
+    gpg --yes --armor -r ${RECIPIENT} -o ${TARGET}/${FILE_PATH} -e ${FILE}
+
+done
+
+DB_FILES=$(cat ${FILE_HASH_DB} |awk '{print substr($0, 0, length($0)-41)}')
+for DB_FILE in ${DB_FILES[@]}; do
+    EXISTS=false
+    for FILE in ${FILES[@]}; do
+        FILE_PATH=${FILE#${SOURCE}/}
+        if [ "${FILE_PATH}" = "${DB_FILE}" ]; then
+            EXISTS=true
+            break
+        fi
+    done
+    if [ ${EXISTS} = false ]; then
+        rm -fr ${TARGET}/${DB_FILE}
+        PAT=${DB_FILE//\//\\\/}
+        PAT=${PAT//\./\\\.}
+        replace "/^${PAT}/d" ${FILE_HASH_DB}
+        warn "D ${DB_FILE}"
+    fi
+done

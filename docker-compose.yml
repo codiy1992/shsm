@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+
+  shsm:
+    image: shsm
+    container_name: shsm
+    build: .
+    network_mode: host
+    volumes:
+      - ${PWD}:/root
+      - ${HOME}/.gnupg/shsm.sec.key:/root/.gnupg/secret.key
+      - ${HOME}/.gnupg/shsm.id_rsa.gpg:/root/.gnupg/id_rsa.gpg
+      - /var/run/docker.sock:/var/run/docker.sock

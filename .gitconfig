@@ -1,0 +1,13 @@
+[user]
+	email = mail@codiy.net
+    name = codiy
+[color]
+    ui = true
+[core]
+    editor = vim
+[pull]
+    ff = only
+[push]
+    default = simple
+[init]
+    defaultBranch = master
