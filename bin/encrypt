@@ -8,7 +8,7 @@ cd ${WORKDIR}
 
 . ./bin/common
 
-FILE_HASH_DB="${PWD}/storage/.hash"
+FILE_HASH_DB="${TARGET}/.hash"
 
 if [ ! -f ${FILE_HASH_DB}} ]; then
     touch ${FILE_HASH_DB}
