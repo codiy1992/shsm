@@ -14,19 +14,13 @@ fi
 if [ ! -f ~/.ssh/config ]; then
     echo '-----BEGIN PGP MESSAGE-----
 
-hQGMA4UngdkzpqQSAQv+LYK/0aw+9MSzS7Z+Mzf8raF3VCbh7vBVJ+Mtvzm5F4/3
-yDLSZeRP4i+o41Ux30JqxnMO5FOMZ5EFWWpP8hYYU3N2tmEHdEFQyltxHXUWBsnI
-4ApGg7hYgqgaUn/MMyJeTqotoa8wnBrVP3nf0uzpjwhJsC/3uhvrIfVNZQwHmOQM
-LnGaWjHWxwz6z1Biitj91MMsD9Le0N2/TkruSIaNbmDh2Uq2rCE5hskF3EU+yYrl
-Zr9Tx3CYc5h3uHHUl0UOQSreNNZrkoMS5rdBm6FY1yHeLt5EscZxqS9BeaT00NbA
-PpWtcaXaQ/Mzx3dJqjI7dWVtXF098CpoUhKr8bdca8CDYUOr1MivW2o56eJC7b7b
-R0+Z2M0eHhYIt+12DIznwRa7YdBZNDP7MqYUONK96Uf2g8P6IYM2STN88jvqCZn5
-MvWyVSN6Vo/b0CFuFxIWHYxF/2yLFLaBcUVAWFW5LKHa9xFN+fIxQ3tKrcB0zoCM
-tMRLxF9W9MuebyhspOOf0p0BVHGU+fy30ePWcTHovDUD0pttT+tylk0cAZD/QGMA
-l0DhDVXK9vUbOcfH2VDekUtbKq/cZ+IxvmwzEhtmeVCjGb+RlwXEHhAit6raVGF+
-aNgUbMs0qizp/rHVG9VuIOLmfits6I4xSx2W+TZTZO4jz0RirblQZlykEeMdjYqJ
-7UDexwc1vrcIlOyFuLKec4kb75CCfUWd3+uwSpzX
-=mkha
+hF4D+yQAOXOmX7ISAQdA+VfAHnuTodjIJPxfJ6TJAnfmKzzeimprwkB8Y2MSp3Aw
+bUxq680VJ0gcAGIHLCD2geePRiGYyf2HXjG10sIsazvBn2VmSVNl6tQdOJLfdHVm
+0p0B4Z1xiBv7TY1I+gf/3YJloVHCELpqk7Jwa+Hf0NQ/vePPc8YVnlpLlM3R84+i
+5Gn6Wh4ro//9FKkemnOTdwCTRJiYfnU+A5G8z7W1kL7eUDPKsPrrX/IxQch7G3vp
+9iFBUZafFXI1hBAcIYvgSv+wh2uGEHE1bzj9JyL3G8t/wVJ4n7/QlZyZ/oKZm1ad
+HzJWlkXE5VAg6tSjnJRi
+=iqOo
 -----END PGP MESSAGE-----' > /tmp/ssh_config
     gpg --quiet --yes -r mail@codiy.net -o ~/.ssh/config -d /tmp/ssh_config
 fi
