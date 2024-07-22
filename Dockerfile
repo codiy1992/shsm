@@ -1,4 +1,4 @@
-FROM amd64/alpine:latest
+FROM alpine:latest
 
 LABEL Author=Codiy \
       Mail=mail@codiy.net
