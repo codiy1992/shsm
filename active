@@ -2,8 +2,9 @@
 
 [[ "`docker images -q shsm:latest 2> /dev/null`" != "" ]] || docker build -t shsm .
 docker run --name shsm \
+    -e PUID=1000 \
+    -e PGID=100 \
     -v ${PWD}:/root \
-    -v ${HOME}/.gnupg/shsm.sec.key:/root/.gnupg/secret.key \
-    -v ${HOME}/.gnupg/shsm.id_rsa.gpg:/root/.gnupg/id_rsa.gpg\
+    -v ${HOME}/.gnupg/shsm:/root/.gnupg/shsm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     --rm -it shsm bash --login

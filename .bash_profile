@@ -4,10 +4,12 @@
 find ~/.gnupg -type f -exec chmod 600 {} \; # Set 600 for files
 find ~/.gnupg -type d -exec chmod 700 {} \; # Set 700 for directories
 
-gpg --quiet --import ~/.gnupg/secret.key
+chown -R root.root ~/.gnupg
+
+gpg --quiet --import ~/.gnupg/shsm/shsm.sec.key
 
 if [ ! -f ~/.ssh/id_rsa ]; then
-    gpg --quiet --yes -r mail@codiy.net -o ~/.ssh/id_rsa -d ~/.gnupg/id_rsa.gpg
+    gpg --quiet --yes -r mail@codiy.net -o ~/.ssh/id_rsa -d ~/.gnupg/shsm.id_rsa.gpg
     chmod 0400 ~/.ssh/id_rsa
 fi
 
