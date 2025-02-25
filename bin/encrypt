@@ -74,7 +74,7 @@ for FILE in ${FILES[@]}; do
 
 done
 
-DB_FILES=$(cat ${FILE_HASH_DB} |awk '{print substr($0, 0, length($0)-41)}')
+DB_FILES=$(cat ${FILE_HASH_DB} |grep "^$1" |awk '{print substr($0, 0, length($0)-41)}')
 for DB_FILE in ${DB_FILES[@]}; do
     EXISTS=false
     for FILE in ${FILES[@]}; do

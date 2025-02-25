@@ -9,12 +9,20 @@ function warn() { echo -e "\033[49;31m$1\033[0m";}
 [ -x "$(command -v gpg)" ] || err "gpg doesn't installed yet."
 [ -f .config ] || err "Config file .config doesn't exists."
 
+if [[ $# != 1 ]]; then
+    err "Need a specific directory as a parameter."
+fi
+
+WORKDIR=$(cd $(dirname $0)/../; pwd)
+if [[ ! -d "${WORKDIR}/data/$1" ]]; then
+    err "Directory ${WORKDIR}/data/$1 doesn't exists."
+fi
+
 RECIPIENT=$(gpg --list-secret-keys | grep -o '<[^>]*>' |head -n 1)
 RECIPIENT="${RECIPIENT//[<>\s]}"
 [ "$RECIPIENT" = "" ] && read -p "Enter your gpg recipient: " RECIPIENT
 
-PATTERNS=$(cat .config | grep -o '^[^#]*' $1 | awk '{print $1}' |sort|uniq)
-
+PATTERNS=$(cat .config |grep "^$1"| grep -o '^[^#]*' | awk '{print $1}' |sort|uniq)
 function replace() {
     [ $# -ne 2 ] && exit 1
     if [ "$(uname)" = "Darwin" ]; then
