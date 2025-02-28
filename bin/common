@@ -14,7 +14,10 @@ if [[ $# != 1 ]]; then
 fi
 
 WORKDIR=$(cd $(dirname $0)/../; pwd)
-if [[ ! -d "${WORKDIR}/data/$1" ]]; then
+if [[ "$0" = "${WORKDIR}/bin/encrypt" ]] && [[ ! -d "${WORKDIR}/$1" ]]; then
+    err "Directory ${WORKDIR}/$1 doesn't exists."
+fi
+if [[ "$0" = "${WORKDIR}/bin/decrypt" ]] && [[ ! -d "${WORKDIR}/data/$1" ]]; then
     err "Directory ${WORKDIR}/data/$1 doesn't exists."
 fi
 
