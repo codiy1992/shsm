@@ -22,3 +22,13 @@ sudo usermod -a -G docker ubuntu
 
 # MISC
 sudo apt install unzip
+sudo apt-get install iptables-persistent
+
+## iptables
+sudo iptables -I INPUT -p tcp --dport 5901 -m state --state NEW -j ACCEPT # for VNC
+sudo iptables -I INPUT -p tcp --dport 54839 -m state --state NEW -j ACCEPT # for FRP
+sudo iptables -I INPUT -p udp --dport 54839 -m state --state NEW -j ACCEPT # for FRP
+sudo netfilter-persistent save
+# test
+# nc -zv SERVER_IP 5901
+
